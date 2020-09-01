@@ -10,3 +10,8 @@ document.getElementById("name-hotel").innerHTML = "Hotel " + hotel.name;
 document.getElementById("location-hotel").innerHTML =
   "Ubicado en " + hotel.location;
 document.getElementById("img-hotel").src = hotel.img;
+
+// Objetivo 2 [Puntuación del hotel]
+var rating = prompt("Puntuación: del 1 al 5");
+
+document.getElementById("rating").innerHTML = rating + " estrellas";
