@@ -15,3 +15,8 @@ document.getElementById("img-hotel.Hawaii").src = hotel.img;
 var rating = prompt("Puntuación: del 1 al 5");
 
 document.getElementById("rating").innerHTML = rating + " estrellas";
+
+// Objetivo 3 [Usuario anónimo]
+var anonymous = confirm("¿Quiere que la reseña sea anónima?");
+
+document.getElementById("anonymous").checked = anonymous;
