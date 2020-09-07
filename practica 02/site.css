@@ -25,3 +25,8 @@ body {
   height: 200px;
   width: 400px;
 }
+
+.stars span{
+color: chocolate;
+font-size: 20px;
+}
