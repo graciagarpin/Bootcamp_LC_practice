@@ -34,18 +34,6 @@ switch (product.type) {
 
 console.log(typeIVA)
 
-// switch (getVAT) {
-//   case product.type = 'alimentación':
-//     getVAT = 0.10* product.price;
-//     break;
-//   case product.type = 'libro':
-//     getVAT = 0.04 * product.price;
-//     break;
-//   default:
-//     getVAT = 0.21 * product.price;
-
-
-
 //Aplicar el IVA al Total
 
 const VAT = getTotal * typeIVA;
