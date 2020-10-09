@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calculadora top by Gracia</title>
-</head>
-<body>
-  <h1>Calculadora top ^^</h1>
-  <script src= "app.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora top by Gracia</title>
+  </head>
+  <body>
+    <header id="title">
+      <h1>Calculadora top ^^</h1>
+    </header>
+    <main>
+      <label for="input-numberA">Introduce un operando:</label>
+      <input type="number" id="numberA" />
+
+      <label for="input-numberB">Introduce otro operando:</label>
+      <input type="number" id="numberB" />
+
+      <label id="input-numberC">Resultado</label>
+      <input type="number" id="numberC" readonly />
+
+      <button id="add-button">+</button>
+      <button id="subst-button">-</button>
+      <button id="mult-button">*</button>
+      <button id="div-button">/</button>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>

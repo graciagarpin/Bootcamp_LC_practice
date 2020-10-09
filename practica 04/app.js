@@ -1,32 +1,42 @@
+document.getElementById('numberA').value = 0;
+document.getElementById('numberB').value = 0;
 
-function add (numberA, numberB) {
-  var result = numberA + numberB;
-  return result;
+function add() {
+  var numberA = document.getElementById('numberA').value;
+  var numberB = document.getElementById('numberB').value;
+
+  var result = parseFloat(numberA) + parseFloat(numberB);
+  document.getElementById('numberC').value = result;
 }
 
-var addResult = add(3,2);
-console.log(addResult);
+document.getElementById('add-button').addEventListener('click', add);
 
-function subtract (numberA, numberB) {
-  var result = numberA - numberB;
-  return result;
+function subtract() {
+  var numberA = document.getElementById('numberA').value;
+  var numberB = document.getElementById('numberB').value;
+
+  var result = parseFloat(numberA) - parseFloat(numberB);
+  document.getElementById('numberC').value = result;
 }
 
-var subtractResult = subtract(3,2);
-console.log(subtractResult);
+document.getElementById('subst-button').addEventListener('click', subtract);
 
-function divide (numberA, numberB) {
-  var result = numberA / numberB;
-  return result;
+function multiply() {
+  var numberA = document.getElementById('numberA').value;
+  var numberB = document.getElementById('numberB').value;
+
+  var result = parseFloat(numberA) * parseFloat(numberB);
+  document.getElementById('numberC').value = result;
 }
 
-var divideResult = divide(3,2);
-console.log(divideResult);
+document.getElementById('mult-button').addEventListener('click', multiply);
 
-function multiply (numberA, numberB) {
-  var result = numberA * numberB;
-  return result;
+function divide() {
+  var numberA = document.getElementById('numberA').value;
+  var numberB = document.getElementById('numberB').value;
+
+  var result = parseFloat(numberA) / parseFloat(numberB);
+  document.getElementById('numberC').value = result;
 }
 
-var multiplyResult = add(3,2);
-console.log(multiplyResult);
+document.getElementById('div-button').addEventListener('click', divide);
