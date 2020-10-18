@@ -34,7 +34,7 @@ for (element of customerBasket) {
   total += element.amount * element.price;
 }
 
-console.log(total);
+console.log('El importe de su compra es ' + total + ' €');
 
 console.log(customerBasket.length);
 
@@ -90,4 +90,17 @@ if (todosSonPrime) {
   console.log('Gastos de envío cero');
 } else {
   console.log('Con gastos de envío');
+}
+
+// Aplicar un descuento del 5% si la compra es mayor de 50 €
+
+let descuento = total * 0.05;
+
+if (total > 50) {
+  total -= descuento;
+  console.log(
+    'El importe de su compra con descuento aplicado es ' + total + ' €'
+  );
+} else {
+  console.log('El importe de su compra es ' + total + ' €');
 }
