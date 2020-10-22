@@ -1,17 +1,16 @@
 function add() {
-  reset();
+ 
   var numberA = document.getElementById('numberA').value;
   var numberB = document.getElementById('numberB').value;
 
-  if (numberA == '' || numberB == '') {
+  if (!Number(numberA) || !Number(numberB)) {
     //sacar pantalla el valor de error
     var mensajeDeError = 'Error';
-    document.getElementById('textError').value = mensajeDeError;
-  } else {
-    var result = parseFloat(numberA) + parseFloat(numberB);
+    document.getElementById('numberC').value = mensajeDeError;
+  }
+    var result = Number(numberA) + Number(numberB);
     document.getElementById('numberC').value = result;
   }
-}
 
 document.getElementById('add-button').addEventListener('click', add);
 
@@ -67,7 +66,7 @@ function divide() {
 document.getElementById('div-button').addEventListener('click', divide);
 
 function reset() {
-  document.getElementById('textError').value = '';
+  // document.getElementById('textError').value = '';
   document.getElementById('numberC').value = '';
 }
 
