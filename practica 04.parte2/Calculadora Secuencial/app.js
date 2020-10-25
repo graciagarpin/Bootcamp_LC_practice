@@ -1,4 +1,3 @@
-
 // Clicka una operación.
 // A continuación introduce un segundo número.
 // Clicka de nuevo otra operación.
@@ -11,20 +10,48 @@
 
 //Inicializacion
 document.getElementById('input-number').value = 0;
-let partialResult = 0;
-document.getElementById('add-button').addEventListener('click', add,);
+
+var partialResult = 0;
+
+var resultWasClicked = false;
+
+document.getElementById('add-button').addEventListener('click', add);
+
+document.getElementById('result-button').addEventListener('click', result);
+// let finalResult = 0;
+// document.getElementById('result-button').addEventListener('click', result,);
+
+// function add() {
+
+//   var number = document.getElementById('input-number').value;
+
+//   partialResult = parseFloat(partialResult) + parseFloat(number);
+//   document.getElementById('input-number').value = partialResult;
+// };
+
+// function reset //añadir botón
 
 function add() {
+  resultReset();
+  var number = document.getElementById('input-number').value;
 
-  var number = document.getElementById('input-number').value; 
-  partialResult = parseFloat(partialResult) + parseFloat(number);
-  document.getElementById('input-number').value = partialResult;
+  if (!Number(number)) {
+    var mensajeDeError = 'Error';
+    document.getElementById('input-number').value = mensajeDeError;
+  } else {
+    partialResult = Number(partialResult) + Number(number);
+    document.getElementById('input-number').value = partialResult;
+  }
 }
 
-//hacer reset de pantalla
-
-function cleanNumber() {
-  document.getElementById('input-number').value = '';
+function result() {
+  if (!resultWasClicked) {
+    //hacemos la opración
+    resultWasClicked = true;
+    add();
+  }
 }
 
-
+function resultReset() {
+  resultWasClicked = false;
+}
