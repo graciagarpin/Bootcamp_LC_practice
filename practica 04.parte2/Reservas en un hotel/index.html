@@ -10,36 +10,41 @@
       <h1>La reserva facilona</h1>
     </header>
     <main>
-      <form name="formulario-reserva" >
+      <form name="formulario-reserva">
         <p>
-          <select name="categoría-hab">
-            <option value="100">Standar</option>
-            <option value="120" selected>Junior Suite</option>
-            <option value="150">Suite</option>
+          <select id="tarifa-hab">
+            <option value="Selecione-una">Seleccione una</option>
+            <option value="Standard">Standard</option>
+            <option value="Junior Suite">Junior Suite</option>
+            <option value="Suite">Suite</option>
           </select>
         </p>
         <p>
           <label>SPA</label>
-          <input type="checkbox" , id="cbox-spa" , value="20" />
+          <input type="checkbox" , id="cbox-usoSpa"/>
         </p>
         <p>
-          <select name="tipo-hab">
-            <option value="0.75" , id="Individual">Individual</option>
-            <option value="1" , id="Doble">Doble</option>
-            <option value="1.25" , id="Triple">Triple</option>
+          <select id="ocupacion-hab">
+            <option value="Individual" , id="Individual">Individual</option>
+            <option value="Doble" , id="Doble">Doble</option>
+            <option value="Triple" , id="Triple">Triple</option>
           </select>
         </p>
         <p>
           <label>Numero de noches</label>
-          <input type="number" id="input-numeroNochesHab" , value="" />
+          <input type="number" id="input-nochesHab" value="" />
         </p>
         <p>
           <label>Noches de parking</label>
-          <input type="number" id="input-numeroNochesParking" , value="" />
+          <input type="number" id="input-nochesParking" value="" />
         </p>
       </form>
-      <label>Coste total de la estancia</label>
-      <button type="button">Calcular</button>
+      <label>Calcular</label>
+      <button type="button" id="button-calcular">Calcular</button>
+      <p>
+      <label>El total de su estancia es:</label>
+      <output type="number" id="output-total" value="">
+      </p>
     </main>
     <script src="app.js"></script>
   </body>
