@@ -17,19 +17,13 @@ var resultWasClicked = false;
 
 document.getElementById('add-button').addEventListener('click', add);
 
+document.getElementById('subst-button').addEventListener('click', subtract);
+
+document.getElementById('mult-button').addEventListener('click', multiply);
+
+document.getElementById('div-button').addEventListener('click', divide);
+
 document.getElementById('result-button').addEventListener('click', result);
-// let finalResult = 0;
-// document.getElementById('result-button').addEventListener('click', result,);
-
-// function add() {
-
-//   var number = document.getElementById('input-number').value;
-
-//   partialResult = parseFloat(partialResult) + parseFloat(number);
-//   document.getElementById('input-number').value = partialResult;
-// };
-
-// function reset //añadir botón
 
 function add() {
   resultReset();
@@ -44,9 +38,48 @@ function add() {
   }
 }
 
+function subtract() {
+  resultReset();
+  var number = document.getElementById('input-number').value;
+
+  if (!Number(number)) {
+    var mensajeDeError = 'Error';
+    document.getElementById('input-number').value = mensajeDeError;
+  } else {
+    partialResult = Number(partialResult) - Number(number);
+    document.getElementById('input-number').value = partialResult;
+  }
+}
+
+function multiply() {
+  resultReset();
+  var number = document.getElementById('input-number').value;
+
+  if (!Number(number)) {
+    var mensajeDeError = 'Error';
+    document.getElementById('input-number').value = mensajeDeError;
+  } else {
+    partialResult = Number(partialResult) * Number(number);
+    document.getElementById('input-number').value = partialResult;
+  }
+}
+
+function divide() {
+  resultReset();
+  var number = document.getElementById('input-number').value;
+
+  if (!Number(number)) {
+    var mensajeDeError = 'Error';
+    document.getElementById('input-number').value = mensajeDeError;
+  } else {
+    partialResult = Number(partialResult) / Number(number);
+    document.getElementById('input-number').value = partialResult;
+  }
+}
+
 function result() {
   if (!resultWasClicked) {
-    //hacemos la opración
+    //hacemos la operación
     resultWasClicked = true;
     add();
   }
