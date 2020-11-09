@@ -1,91 +1,91 @@
-var tarifaDeLaHab = 0;
-var usoSpa = 0;
-var factorDeOcupacion = 0.75;
-var numeroDeNochesDeHab = 0;
-var numeroDeNochesDeParking = 0;
-var cuentaTotal = 0;
+//Variable initialization
+
+var roomRate = 0;
+var spaUse = 0;
+var occupationFactor = 0.75;
+var numberOfRoomNights = 0;
+var numberOfParkingNights = 0;
+var totalCount = 0;
 
 document
-  .getElementById('tarifa-hab')
-  .addEventListener('change', actualizacionTarifaHab);
+  .getElementById('room-rate')
+  .addEventListener('change', updateRoomRate);
 document
-  .getElementById('cbox-usoSpa')
-  .addEventListener('click', actualizacionUsoSpa);
+  .getElementById('cbox-spaUse')
+  .addEventListener('click', updateSpaUse);
 document
-  .getElementById('ocupacion-hab')
-  .addEventListener('change', actualizacionOcupacion);
+  .getElementById('room-ocupation')
+  .addEventListener('change', occupationFactorUpdate);
 document
-  .getElementById('input-nochesHab')
-  .addEventListener('change', actualicionNumeroNoches);
+  .getElementById('roomNights-input')
+  .addEventListener('change', updateNumberOfRoomNights);
 document
-  .getElementById('input-nochesParking', actualizacionNumerNochesParking)
-  .addEventListener('change', actualizacionNumerNochesParking);
+  .getElementById('parkingNights-input', updateNumberOfParkingNights)
+  .addEventListener('change', updateNumberOfParkingNights);
 // document
 //   .getElementById('button-calcular')
-//   .addEventListener('click', calculoTotal);
-document.getElementById('output-total').value = 0;
+//   .addEventListener('click', totalCalculation);
+document.getElementById('total-output').value = 0;
 
-function actualizacionTarifaHab() {
-  var tarifaSeleccionada = document.getElementById('tarifa-hab').value;
+function updateRoomRate() {
+  var tarifaSeleccionada = document.getElementById('room-rate').value;
   switch (tarifaSeleccionada) {
     case 'Standard':
-      tarifaDeLaHab = 100;
+      roomRate = 100;
       break;
     case 'Junior Suite':
-      tarifaDeLaHab = 120;
+      roomRate = 120;
       break;
     case 'Suite':
-      tarifaDeLaHab = 150;
+      roomRate = 150;
       break;
   }
-  calculoTotal();
+  totalCalculation();
 }
 
-function actualizacionUsoSpa() {
-  if (document.getElementById('cbox-usoSpa').checked) {
-    usoSpa = 20;
+function updateSpaUse() {
+  if (document.getElementById('cbox-spaUse').checked) {
+    spaUse = 20;
   } else {
-    usoSpa = 0;
+    spaUse = 0;
   }
-  calculoTotal();
+  totalCalculation();
 }
 
-function actualizacionOcupacion() {
-  var ocupacionSeleccionada = document.getElementById('ocupacion-hab').value;
+function occupationFactorUpdate() {
+  var ocupacionSeleccionada = document.getElementById('room-ocupation').value;
   switch (ocupacionSeleccionada) {
     case 'Individual':
-      factorDeOcupacion = 0.75;
+      ocucupationFactor = 0.75;
       break;
     case 'Doble':
-      factorDeOcupacion = 1;
+      ocucupationFactor = 1;
       break;
     case 'Triple':
-      factorDeOcupacion = 1.25;
+      ocucupationFactor = 1.25;
       break;
   }
-  calculoTotal();
+  totalCalculation();
 }
 
-function actualicionNumeroNoches() {
-  numeroDeNochesDeHab = document.getElementById('input-nochesHab').value;
-  calculoTotal();
+function updateNumberOfRoomNights() {
+  numberOfRoomNights = document.getElementById('roomNights-input').value;
+  totalCalculation();
 }
 
-function actualizacionNumerNochesParking() {
-  numeroDeNochesDeParkingIndicado = document.getElementById(
-    'input-nochesParking'
+function updateNumberOfParkingNights() {
+  numberOfParkingNightsIndicado = document.getElementById(
+    'parkingNights-input'
   ).value;
-  numeroDeNochesDeParking = numeroDeNochesDeParkingIndicado * 10;
-  calculoTotal();
+  numberOfParkingNights = numberOfParkingNightsIndicado * 10;
+  totalCalculation();
 }
 
-function calculoTotal() {
-  cuentaTotal =
-    (tarifaDeLaHab + usoSpa) * factorDeOcupacion * numeroDeNochesDeHab +
-    numeroDeNochesDeParking;
-  console.log(cuentaTotal);
-  document.getElementById('output-total').value = cuentaTotal + " €";
+function totalCalculation() {
+  totalCount =
+    (roomRate + spaUse) * ocucupationFactor * numberOfRoomNights +
+    numberOfParkingNights;
+  console.log(totalCount);
+  document.getElementById('total-output').value = totalCount + " €";
 }
 
-// 5 noches x Hab. Estándar con SPA de uso individual + 2 noches de parking. En este caso la tarifa por noche sería: (100€ noche + 20€ spa) al 75% por uso individual = 90€/noche x 5 noches = 450€ + (10€ parking x 2 noches) = 470€ TOTAL.
-//numeroDeNochesDeHab *

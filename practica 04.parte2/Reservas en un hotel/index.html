@@ -10,10 +10,10 @@
       <h1>La reserva facilona</h1>
     </header>
     <main>
-      <form name="formulario-reserva">
+      <form name="booking-form">
         <p>
-          <select id="tarifa-hab">
-            <option value="Selecione-una">Seleccione una</option>
+          <select id="room-rate">
+            <option value="Select-one">Seleccione una</option>
             <option value="Standard">Standard</option>
             <option value="Junior Suite">Junior Suite</option>
             <option value="Suite">Suite</option>
@@ -21,10 +21,10 @@
         </p>
         <p>
           <label>SPA</label>
-          <input type="checkbox" , id="cbox-usoSpa"/>
+          <input type="checkbox" , id="cbox-spaUse"/>
         </p>
         <p>
-          <select id="ocupacion-hab">
+          <select id="room-ocupation">
             <option value="Individual" , id="Individual">Individual</option>
             <option value="Doble" , id="Doble">Doble</option>
             <option value="Triple" , id="Triple">Triple</option>
@@ -32,18 +32,18 @@
         </p>
         <p>
           <label>Numero de noches</label>
-          <input type="number" id="input-nochesHab" value="" />
+          <input type="number" id="roomNights-input" value="" />
         </p>
         <p>
           <label>Noches de parking</label>
-          <input type="number" id="input-nochesParking" value="" />
+          <input type="number" id="parkingNights-input" value="" />
         </p>
       </form>
       <!-- <label>Calcular</label>
       <button type="button" id="button-calcular">Calcular</button> -->
       <p>
       <label>El total de su estancia es:</label>
-      <output type="number" id="output-total" value="">
+      <output type="number" id="total-output" value="">
       </p>
     </main>
     <script src="app.js"></script>
