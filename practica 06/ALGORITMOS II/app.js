@@ -43,10 +43,7 @@ var transformLetter = letter => {
 //paso 1.2.1: buscar la letra en el alfabeto plano y devolver su index (posición).
 var searchIndex = (letter) => {
 
-  for (var index= 0; index < plainAlphabet.length; index++) {
-      if (plainAlphabet[index] === letter) return index;
-  }
-  return -1;
+  return plainAlphabet.indexOf(letter);
 }
 
 //paso 1.2.2.: buscar el index en el alfabeto encriptado y devolver la letra que corresponde.
@@ -83,10 +80,8 @@ function decryptLetter (letter) {
 }
 
 function searchIndexOfLetter(letter) {
-  for (var index = 0; index < encryptionAlphabet.length; index++) {
-    if (letter === encryptionAlphabet[index]) return index;
-  }
-  return -1;
+  
+  return encryptionAlphabet.indexOf(letter);
 }
 
 function searchForLetterWithIndex(index){
