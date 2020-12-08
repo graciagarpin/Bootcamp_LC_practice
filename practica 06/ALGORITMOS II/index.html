@@ -11,14 +11,14 @@
   </header>
   <main>
     <div>
-      <textarea id="encrypt-tt" rows="7" cols="20">Write something here</textarea>
+      <textarea id="decrypt-tt" rows="7" cols="20" onfocus="if(this.value == 'Enter your text here') this.value='';" onblur="if(this.value == '') this.value='Enter your text here';" >Enter your text here</textarea>
     </div>
    <p></p> 
     <button id="encrypt-btn"> ↓ Encrypt ↓ </button>
     <button id="decrypt-btn"> ↑ Decrypt ↑ </button>
     <p></p> 
     <div>
-      <textarea id="decrypt-tt" rows="7" cols="20"></textarea>
+      <textarea id="encrypt-tt" rows="7" cols="20" onfocus="if(this.value == 'Enter your text here') this.value='';" onblur="if(this.value == '') this.value='Enter your text here';" >Enter your text here</textarea>
     </div>   
 </main>
   <script src="app.js"></script>
