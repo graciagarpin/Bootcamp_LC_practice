@@ -1,12 +1,9 @@
 var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
 var encryptionAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
-var encryptedText = document.getElementById("decrypt-tt").value;
-var decryptedText = document.getElementById("encrypt-tt").value;
 
-// document.getElementById("encrypt-tt").addEventListener("change", encrypted_text);
-document.getElementById("encrypt-btn").addEventListener("click", transformMessage);
-// document.getElementById("encrypt-tt").addEventListener("change", decrypted_text);
-// document.getElementById("decrypt-btn").addEventListener("click", decrypt);
+document.getElementById("encrypt-btn").addEventListener("click", transformToEncryptedMessage);
+document.getElementById("decrypt-btn").addEventListener("click", transformToDecryptedMessage);
+
 
 //1. Encriptar el mensaje
 //  - Escuchar la entrada de texto -> el textarea ✓ 
@@ -18,8 +15,8 @@ document.getElementById("encrypt-btn").addEventListener("click", transformMessag
 
 
 //paso 1: ¿Qué hace? recibir el mensaje y devolverlo transformado
-function transformMessage (){
-  var message = document.getElementById("encrypt-tt").value;
+function transformToEncryptedMessage (){
+  var message = document.getElementById("decrypt-tt").value;
   var messageLowerCase = transformToLowerCase(message);
 
   var result = "";
@@ -27,7 +24,7 @@ function transformMessage (){
   for (var letter of messageLowerCase){
     result = result + transformLetter(letter);
   }
-  document.getElementById("decrypt-tt").value = result;
+  document.getElementById("encrypt-tt").value = result;
 }
 
 //paso 1.1: transformar el mensaje a minúsculas.
@@ -60,7 +57,41 @@ var searchEncryptedLetter = (index) => {
   return encryptedLetter;
 }
 
-//paso 2: 
+//paso 2: Recibe el mensaje encriptado y lo devuelve desencriptado.
 
+function transformToDecryptedMessage () {
+  var message = document.getElementById("encrypt-tt").value;
+  message =  transformToLowerCase(message); 
+  
+  var result = "";
+  //el mensaje en minúsculas hay que leerlo letra a letra para desencriptarlo, para eso
+  //creamos un for que itere por cada elemento del mensaje.
 
+  for (var letter of message ) {
+    result = result + decryptLetter(letter);
+  }
+  //busco en el alfabeto encriptado la posicion de la letra.
+  // pintarlo en pantalla el result
+  document.getElementById("decrypt-tt").value = result;
+}
 
+function decryptLetter (letter) {
+  var index = searchIndexOfLetter(letter);
+  var decryptedLetter = searchForLetterWithIndex(index);
+
+  return decryptedLetter;
+}
+
+function searchIndexOfLetter(letter) {
+  for (var index = 0; index < encryptionAlphabet.length; index++) {
+    if (letter === encryptionAlphabet[index]) return index;
+  }
+  return -1;
+}
+
+function searchForLetterWithIndex(index){
+  var decryptedLetter = plainAlphabet[index]; 
+  return decryptedLetter;
+}
+
+decryptedLetter = document.getElementById("decrypt-tt").value;
