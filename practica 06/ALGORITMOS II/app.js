@@ -1,5 +1,5 @@
-var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,'";
-var encryptionAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm";
+var plainAlphabet = "abcdefghijklmnopqrstuvwxyz:()!¡,' ";
+var encryptionAlphabet = "qw,ert(yuio'pa:sdfg!hjklz¡xcv)bnm ";
 
 document.getElementById("encrypt-btn").addEventListener("click", transformToEncryptedMessage);
 document.getElementById("decrypt-btn").addEventListener("click", transformToDecryptedMessage);
