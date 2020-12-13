@@ -78,6 +78,9 @@ var showProducts = (productList) => {
     var price = document.createElement('h4');
     price.innerText = product.price;
     container.appendChild(price);
+    var units = document.createElement("h4");
+    units.innerText = product.units;
+    container.appendChild(units);
   }
 };
 

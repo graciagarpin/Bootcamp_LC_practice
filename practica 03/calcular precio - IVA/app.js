@@ -19,26 +19,26 @@ console.log(getTotal);
 
 // Calcular el IVA
 
-let typeIVA;
+let typeVAT;
 
 switch (product.type) {
   case 'alimentación':
-    typeIVA = 0.10;
+    typeVAT = 0.10;
     break;
   case 'libro':
-    typeIVA = 0.04;
+    typeVAT = 0.04;
     break;
   default:
-    typeIVA = 0.21;
+    typeVAT = 0.21;
 }
 
-console.log(typeIVA)
+console.log(typeVAT)
 
 //Aplicar el IVA al Total
 
-const VAT = getTotal * typeIVA;
+const VAT = getTotal * typeVAT;
 
-console.log(getTotal * typeIVA);
+console.log(getTotal * typeVAT);
 
 console.log(getTotal + VAT);
 
