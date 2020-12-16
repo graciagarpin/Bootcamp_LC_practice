@@ -70,46 +70,25 @@ const products = [
 
 var container = document.getElementById('product-list-container');
 
-var showProducts = (productList) => {
-  for (var product of productList) {
-    var description = document.createElement('h4'); //creo el elemento
+var showProducts = (products) => {
+  for (var product of products) {
+    var description = document.createElement('h3'); //creo el elemento
     description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
     container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
+
     var price = document.createElement('h4');
     price.innerText = product.price;
     container.appendChild(price);
-    var units = document.createElement("h4");
-    units.innerText = product.units;
-    container.appendChild(units);
+
+    var input = document.createElement('input');
+    //input.setAttribute("id", product.description);
+    input.setAttribute('type', 'number');
+    input.addEventListener('change',(event) => (product.units = event.target.value)); //esta función almacena el valor en product.units cada vez que se produce un cambio
+    input.setAttribute('value', product.units);
+    container.appendChild(input);
   }
 };
 
 showProducts(products);
 
-// for(var product of productList) {
-//   var price = document.createElement("h4");
-//   price.innerText = productList.price;
-//   container.appendChild(price);
-// }
-
-// var input = document.createElement("input");
-// input.setAttribute("class", "product-unit");
-// input.setAttribute("type", "number");
-// input.setAttribute("value", 5);
-// input.addEventListener("change", event => console.log(event.target.value));
-
-// var main = document.getElementById("main");
-// main.appendChild(input);
-
-//A partir de una lista de productos, recorrerla y calcular coste de cada producto con más de 0 units.
-//  * Limitar el número máximo de units que se pueden introducir al número del stock del producto.
-//Para calcular el coste de cada producto:
-//  * Coste total producto = units * price
-//          (el subtotal es el sumatorio de todos los "coste total producto")
-//  * IVA total producto = units * tax
-//          (el IVA es un sumatorio de todos los "iva total producto")
-//          (TOTAL = subtotal + IVA)
-//            - switch (tax)
-//              case "EXEMPT_TYPE" = "1"
-//              case "LOWER_TYPE" = "1.4"
-//              case "REGULAR_TYPE" = "1'21"
+//Cómo calcular: iterar por el objeto y empezar a multiplicar y sumar
