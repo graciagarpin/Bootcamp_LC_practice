@@ -70,8 +70,16 @@ const products = [
 
 var container = document.getElementById('product-list-container');
 
+var index = 1;
+
 var showProducts = (products) => {
   for (var product of products) {
+
+    var indexElement = document.createElement("h3");
+    indexElement.innerText = index;
+    container.appendChild(indexElement);
+    index++;
+
     var description = document.createElement('h3'); //creo el elemento
     description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
     container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
@@ -81,7 +89,7 @@ var showProducts = (products) => {
     container.appendChild(price);
 
     var input = document.createElement('input');
-    //input.setAttribute("id", product.description);
+    input.setAttribute("id", product.indexElement);
     input.setAttribute('type', 'number');
     input.addEventListener('change',(event) => (product.units = event.target.value)); //esta función almacena el valor en product.units cada vez que se produce un cambio
     input.setAttribute('value', product.units);
@@ -91,4 +99,3 @@ var showProducts = (products) => {
 
 showProducts(products);
 
-//Cómo calcular: iterar por el objeto y empezar a multiplicar y sumar
