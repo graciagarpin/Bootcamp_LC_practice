@@ -1,8 +1,3 @@
-//AGENDA. implementar una agenda para un equipo de personas, de modo que nos indique que horas tienen
-// libres y que horas están ocupados. Además, vamos a generar un algoritmo que haga una búsqueda en un equipo
-// y determine cual es la primera hora en que todos los miembros del equipo están libres,
-// para asi poder establecer una reunión. Es decir, que busque el primer hueco disponible en sus agendas.
-
 var WORK_HOURS = [
   //este es el objeto franjas horarias
   '08:00 - 09:00',
@@ -35,26 +30,31 @@ var myTeam = [
   },
 ];
 
-// 1. Generación aleatoria de la disponibilidad:
-// recorrer todos los miembros del equipo, y a su vez, para cada miembro, todas las franjas
-// horarias de su disponibilidad, e ir asignando aleatoriamente si está disponible o no en dicha franja.
-// Una vez hayas generado tu agenda aleatoria, muestrala por consola
+//AGENDA. 1. implementar una agenda para un equipo de personas, de modo que nos indique que horas tienen
+// libres y que horas están ocupados.
 
-function crearAgendaDeDisponibilidad(myTeam, WORK_HOURS) {
+function createScheduleOfAvailability(myTeam, WORK_HOURS) {
   for (var member of myTeam) {
     // recorrer todos los miembros del equipo
     console.log('la persona con nombre ' + member.name);
 
     for (let index = 0; index < member.availability.length; index++) {
       // para cada miembro, recorrer todas las franjas e ir asignando si está disponible o no esa franja
-      member.availability[index] = generacionAleatoriaBinaria();
+      member.availability[index] = getTandom();
+      // Una vez hayas generado tu agenda aleatoria, muestrala por consola
       console.log(WORK_HOURS[index] + ' ' + member.availability[index]);
     }
   }
 }
 
-crearAgendaDeDisponibilidad(myTeam, WORK_HOURS);
+createScheduleOfAvailability(myTeam, WORK_HOURS);
 
-function generacionAleatoriaBinaria() {
+function getTandom() {
   return Math.random() < 0.5 ? 'si' : 'no';
 }
+
+// 2. Además, vamos a generar un algoritmo que haga una búsqueda en un equipo
+// y determine cual es la primera hora en que todos los miembros del equipo están libres,
+// para asi poder establecer una reunión. Es decir, que busque el primer hueco disponible en sus agendas.
+
+function firstHourAvailableToAll(params) {}
