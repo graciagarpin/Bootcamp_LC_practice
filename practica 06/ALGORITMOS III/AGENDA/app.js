@@ -40,7 +40,7 @@ function createScheduleOfAvailability(myTeam, WORK_HOURS) {
 
     for (let index = 0; index < member.availability.length; index++) {
       // para cada miembro, recorrer todas las franjas e ir asignando si está disponible o no esa franja
-      member.availability[index] = getTandom();
+      member.availability[index] = getRandom();
       // Una vez hayas generado tu agenda aleatoria, muestrala por consola
       console.log(WORK_HOURS[index] + ' ' + member.availability[index]);
     }
@@ -49,12 +49,46 @@ function createScheduleOfAvailability(myTeam, WORK_HOURS) {
 
 createScheduleOfAvailability(myTeam, WORK_HOURS);
 
-function getTandom() {
-  return Math.random() < 0.5 ? 'si' : 'no';
+function getRandom() {
+  return Math.random() < 0.5 ? true : false;
 }
 
 // 2. Además, vamos a generar un algoritmo que haga una búsqueda en un equipo
 // y determine cual es la primera hora en que todos los miembros del equipo están libres,
 // para asi poder establecer una reunión. Es decir, que busque el primer hueco disponible en sus agendas.
 
-function firstHourAvailableToAll(params) {}
+//recorre member.availability === true
+
+// Algoritmo : empezar por el primer miembro y recorrer hasta encontrar disponibilidad true y pasar al siguiente miembro
+// y recorrerlo. Para agilizar el proceso, como tienen que coincidir todos en true, creo la variable cadena
+// y la inicializo a true, cuando esta encuentra un false, directamente se rompe y no sigue consultando, y
+// se reinicia la búsqueda desde la siguiente hora disponible para el priemr miembro.
+
+// Para que se detenga cuando encuente la primera hora disponible para todos los miembros, permito el flujo 
+// siempre y cuando no se encuentre coincidencia horaria, y el el momento que la encuentre la corto.
+
+function findFirstHourAvailableToAllMembers(myTeam, WORK_HOURS) {
+  var member = myTeam[0];
+  var notFound = true;
+  var index = 0;
+  while (notFound === true && index < myTeam.length) {
+    var availability = member.availability[index];
+    if (availability === true) {
+      var memberIndex = 1;
+      var cadena = true;
+      while (cadena === true && memberIndex < myTeam.length) {
+        if (myTeam[memberIndex].availability[index] === false) {
+          cadena = false;
+        }
+        memberIndex++;
+      }
+      if (cadena == true) {
+        notFound = false;
+        console.log('la reunión es de ' + WORK_HOURS[index]);
+      }
+    }
+    index++;
+  }
+}
+
+findFirstHourAvailableToAllMembers(myTeam, WORK_HOURS);
