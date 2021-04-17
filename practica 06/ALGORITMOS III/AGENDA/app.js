@@ -50,7 +50,7 @@ function createScheduleOfAvailability(myTeam, WORK_HOURS) {
 createScheduleOfAvailability(myTeam, WORK_HOURS);
 
 function getRandom() {
-  return Math.random() < 0.5 ? true : false;
+  return Math.random() < 0.5 ;
 }
 
 // 2. Además, vamos a generar un algoritmo que haga una búsqueda en un equipo
@@ -71,21 +71,21 @@ function findFirstHourAvailableToAllMembers(myTeam, WORK_HOURS) {
   var member = myTeam[0];
   var notFound = true;
   var index = 0;
-  while (notFound === true && index < myTeam.length) {
+  while (notFound && index < myTeam.length) { // no hace falta poner q las var de las condiciones son === true, lo hace por defecto.
     var availability = member.availability[index];
-    if (availability === true) {
+    if (availability) {
       var memberIndex = 1;
       var cadena = true;
-      while (cadena === true && memberIndex < myTeam.length) {
+      while (cadena && memberIndex < myTeam.length) {
         if (myTeam[memberIndex].availability[index] === false) {
           cadena = false;
         }
         memberIndex++;
       }
-      if (cadena == true) {
+      if (cadena) {
         notFound = false;
-        console.log('la reunión es de ' + WORK_HOURS[index]);
-      }
+        console.log('el equipo está disponible de ' + WORK_HOURS[index]);
+      }else console.log('El equipo no está disponible a ninguna hora');
     }
     index++;
   }
