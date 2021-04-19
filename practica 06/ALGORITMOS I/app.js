@@ -91,7 +91,8 @@ var showProducts = (products) => {
     var input = document.createElement('input');
     input.setAttribute("id", product.indexElement);
     input.setAttribute('type', 'number');
-    input.addEventListener('change',(event) => (product.units = event.target.value)); //esta función almacena el valor en product.units cada vez que se produce un cambio
+    input.addEventListener('change',(event) => (console.log(event.target.value))); //esta función almacena el valor en product.units cada vez que se produce un cambio
+    //to do: comprobar el escuchador de cambios
     input.setAttribute('value', product.units);
     container.appendChild(input);
   }
@@ -99,3 +100,38 @@ var showProducts = (products) => {
 
 showProducts(products);
 
+//Cómo calcular: iterar por el objeto y empezar a multiplicar y sumar
+//sólo cuando haga click en el botón calcular es cuando se tiene que calcular el total con los valores que estén introducidos y no antes.
+
+document.getElementById("calcular-btn").addEventListener("click", updatePage);
+
+function getTotal(products){
+  var total = 0;
+  for (var product of products) {
+    total = total + (product.price * product.units);
+    return total;
+  }
+} //LA FUNCIÓN YA ESTÁ SELLADA!
+
+function updatePage() {
+  var total = getTotal(products);
+  var showResult= document.getElementById("total-output").value;
+
+showResult= total + " €";
+}
+
+// to do: 
+
+
+// var disableEnableBtn = () => {
+//   if (
+//     //falta meter la condición: que todos los product.units valen 0 en el momento de calcular.
+
+//   ) { 
+//     disableBtn = () => document.getElementById("calcular-btn").disabled = true; // Disabled
+//   }else {
+//     enableBtn = () => document.getElementById("calcular-btn").disabled = false; // Enabled 
+//   }
+// }
+
+// console.log();
