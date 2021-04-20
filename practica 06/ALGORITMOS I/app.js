@@ -103,22 +103,44 @@ showProducts(products);
 //Cómo calcular: iterar por el objeto y empezar a multiplicar y sumar
 //sólo cuando haga click en el botón calcular es cuando se tiene que calcular el total con los valores que estén introducidos y no antes.
 
-document.getElementById("calcular-btn").addEventListener("click", updatePage);
+document.getElementById("calcular-btn").addEventListener("click", getSubtotal(products)); //mas adelante llamará a function updatePage
 
-function getTotal(products){
-  var total = 0;
-  for (var product of products) {
-    total = total + (product.price * product.units);
-    return total;
+// function getTotal(products) {
+//   var total = 0;
+//   for (product of products) {
+//     total = total + ;
+//     // return total;
+//   }
+// } 
+
+function getSubtotal(products) {
+  var subtotal = 0;
+  for (product of products) {
+    subtotal = subtotal + (product.price * product.units) ;
   }
-} 
-
-function updatePage() {
-  var total = getTotal(products);
-  var showResult= document.getElementById("total-output").value;
-
-showResult= total + " €";
+  document.getElementById("subtotal-output").value = subtotal;
 }
+
+// function showSubtotal{
+//   var showMe = document.getElementById("subtotal-output").value;
+//   return showMe;
+// }
+
+// function getIVA(products) {
+//   var iva;
+//   for (product of products) {
+//     iva = iva + (product.price * product.units) * product.iva / 100;
+//     return iva;
+//   }
+// }
+
+// function updatePage() {
+//   var total = getTotal(products);
+//   var showResult= document.getElementById("total-output").value;
+
+// showResult= total + " €";
+// }
+
 
 // to do: 
 
