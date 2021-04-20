@@ -74,8 +74,8 @@ var index = 1;
 
 var showProducts = (products) => {
   for (var product of products) {
-
-    var indexElement = document.createElement("h3");
+      
+    var indexElement = document.createElement('h3');
     indexElement.innerText = index;
     container.appendChild(indexElement);
     index++;
@@ -111,7 +111,7 @@ function getTotal(products){
     total = total + (product.price * product.units);
     return total;
   }
-} //LA FUNCIÓN YA ESTÁ SELLADA!
+} 
 
 function updatePage() {
   var total = getTotal(products);
