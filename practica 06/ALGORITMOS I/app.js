@@ -64,46 +64,51 @@ const products = [
 ];
 
 // APARTADO 1. Generar HTML Dinámico para representar selección de unidades
-//para cada producto de la lista.
+// para cada producto de la lista.
 
 // HTML --> div in="product-list-container"
 
 var container = document.getElementById('product-list-container');
 
-var index = 1;
-
-var showProducts = (products) => {
+var showProducts = () => {
   for (var product of products) {
-      
-    var indexElement = document.createElement('h3');
-    indexElement.innerText = index;
-    container.appendChild(indexElement);
-    index++;
-
-    var description = document.createElement('h3'); //creo el elemento
-    description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
-    container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
-
-    var price = document.createElement('h4');
-    price.innerText = product.price;
-    container.appendChild(price);
-
-    var input = document.createElement('input');
-    input.setAttribute("id", product.indexElement);
-    input.setAttribute('type', 'number');
-    input.addEventListener('change',(event) => (console.log(event.target.value))); //esta función almacena el valor en product.units cada vez que se produce un cambio
-    //to do: comprobar el escuchador de cambios
-    input.setAttribute('value', product.units);
-    container.appendChild(input);
+    printProduct(product);
   }
 };
+function printProduct(product) {
+  var index = 1;
+  var indexElement = document.createElement('h3');
+  indexElement.innerText = index;
+  container.appendChild(indexElement);
+  index++;
+
+  var description = document.createElement('h3'); //creo el elemento
+  description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
+  container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
+
+  var price = document.createElement('h4');
+  price.innerText = product.price + ' €';
+  container.appendChild(price);
+
+  var input = document.createElement('input');
+  input.setAttribute('id', product.indexElement);
+  input.setAttribute('type', 'number');
+  input.setAttribute('value', product.units);
+  input.addEventListener(
+    'change',
+    (event) => (product.units = event.target.value)
+  ); //esta función almacena el valor en product.units cada vez que se produce un cambio
+  container.appendChild(input);
+}
 
 showProducts(products);
 
 //Cómo calcular: iterar por el objeto y empezar a multiplicar y sumar
 //sólo cuando haga click en el botón calcular es cuando se tiene que calcular el total con los valores que estén introducidos y no antes.
 
-document.getElementById("calcular-btn").addEventListener("click", getSubtotal(products)); //mas adelante llamará a function updatePage
+document
+  .getElementById('calcular-btn')
+  .addEventListener('click', () => showResult()); //mas adelante llamará a function updatePage
 
 // function getTotal(products) {
 //   var total = 0;
@@ -111,28 +116,31 @@ document.getElementById("calcular-btn").addEventListener("click", getSubtotal(pr
 //     total = total + ;
 //     // return total;
 //   }
-// } 
+// }
 
-function getSubtotal(products) {
-  var subtotal = 0;
-  for (product of products) {
-    subtotal = subtotal + (product.price * product.units) ;
-  }
-  document.getElementById("subtotal-output").value = subtotal;
+function showResult() {
+  getSubtotal();
+  getIVA();
 }
 
-// function showSubtotal{
-//   var showMe = document.getElementById("subtotal-output").value;
-//   return showMe;
-// }
+function getSubtotal() {
+  var subtotal = 0;
+  for (product of products) {
+    subtotal = subtotal + product.price * product.units;
+  }
+  document.getElementById('subtotal-output').value = subtotal + ' €';
+}
 
-// function getIVA(products) {
-//   var iva;
-//   for (product of products) {
-//     iva = iva + (product.price * product.units) * product.iva / 100;
-//     return iva;
-//   }
-// }
+function getIVA() {
+  var iva = 0;
+  for (product of products) {
+    iva = iva + (product.price * product.units) * product.iva / 100;
+  }
+  document.getElementById('iva-output').value = iva + ' €';
+}
+
+
+
 
 // function updatePage() {
 //   var total = getTotal(products);
@@ -141,18 +149,16 @@ function getSubtotal(products) {
 // showResult= total + " €";
 // }
 
-
-// to do: 
-
+// to do:
 
 // var disableEnableBtn = () => {
 //   if (
 //     //falta meter la condición: que todos los product.units valen 0 en el momento de calcular.
 
-//   ) { 
+//   ) {
 //     disableBtn = () => document.getElementById("calcular-btn").disabled = true; // Disabled
 //   }else {
-//     enableBtn = () => document.getElementById("calcular-btn").disabled = false; // Enabled 
+//     enableBtn = () => document.getElementById("calcular-btn").disabled = false; // Enabled
 //   }
 // }
 
