@@ -68,7 +68,7 @@ const products = [
 
 // HTML --> div in="product-list-container"
 
-var container = document.getElementById('product-list-container');
+var container = document.getElementById('product-list-container', 'li');
 
 var showProducts = () => {
   for (var product of products) {
@@ -76,21 +76,21 @@ var showProducts = () => {
   }
 };
 function printProduct(product) {
-  var index = 1;
-  var indexElement = document.createElement('h3');
-  indexElement.innerText = index;
-  container.appendChild(indexElement);
-  index++;
+  // var index = 1;
+  // var indexElement = document.createElement('li');
+  // indexElement.innerText = index;
+  // container.appendChild(indexElement);
+  // index++;
 
-  var description = document.createElement('h3'); //creo el elemento
+  var description = document.createElement('li'); //creo el elemento
   description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
   container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
 
-  var price = document.createElement('h4');
+  var price = document.createElement('span');
   price.innerText = product.price + ' €';
   container.appendChild(price);
 
-  var input = document.createElement('input');
+  var input = document.createElement('input', 'li');
   input.setAttribute('id', product.indexElement);
   input.setAttribute('type', 'number');
   input.setAttribute('value', product.units);
@@ -108,19 +108,13 @@ showProducts(products);
 
 document
   .getElementById('calcular-btn')
-  .addEventListener('click', () => showResult()); //mas adelante llamará a function updatePage
-
-// function getTotal(products) {
-//   var total = 0;
-//   for (product of products) {
-//     total = total + ;
-//     // return total;
-//   }
-// }
+  .addEventListener('click', () => showResult());
 
 function showResult() {
-  getSubtotal();
-  getIVA();
+  var subtotal = getSubtotal();
+  var iva = getIVA();
+  var total = subtotal + iva;
+  document.getElementById('total-output').value = total + ' €';
 }
 
 function getSubtotal() {
@@ -129,15 +123,22 @@ function getSubtotal() {
     subtotal = subtotal + product.price * product.units;
   }
   document.getElementById('subtotal-output').value = subtotal + ' €';
+  return subtotal;
 }
 
 function getIVA() {
   var iva = 0;
   for (product of products) {
-    iva = iva + (product.price * product.units) * product.iva / 100;
+    iva = iva + (product.price * product.units * product.tax) / 100;
   }
   document.getElementById('iva-output').value = iva + ' €';
+  return iva;
 }
+
+
+
+
+
 
 
 
