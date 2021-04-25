@@ -6,56 +6,56 @@ const EXEMPT_TYPE = 0;
 // Entrada.
 const products = [
   {
-    description: 'Goma de borrar',
+    description: 'Goma de borrar ',
     price: 0.25,
     tax: LOWER_TYPE,
     stock: 2,
     units: 0,
   },
   {
-    description: 'Lápiz H2',
+    description: 'Lápiz H2 ',
     price: 0.4,
     tax: LOWER_TYPE,
     stock: 5,
     units: 0,
   },
   {
-    description: 'Cinta rotular',
+    description: 'Cinta rotular ',
     price: 9.3,
     tax: REGULAR_TYPE,
     stock: 2,
     units: 0,
   },
   {
-    description: 'Papelera plástico',
+    description: 'Papelera plástico ',
     price: 2.75,
     tax: REGULAR_TYPE,
     stock: 5,
     units: 0,
   },
   {
-    description: 'Escuadra',
+    description: 'Escuadra ',
     price: 8.4,
     tax: REGULAR_TYPE,
     stock: 3,
     units: 0,
   },
   {
-    description: 'Pizarra blanca',
+    description: 'Pizarra blanca ',
     price: 5.95,
     tax: REGULAR_TYPE,
     stock: 2,
     units: 0,
   },
   {
-    description: 'Afilador',
+    description: 'Afilador ',
     price: 1.2,
     tax: LOWER_TYPE,
     stock: 10,
     units: 0,
   },
   {
-    description: 'Libro ABC',
+    description: 'Libro ABC ',
     price: 19,
     tax: EXEMPT_TYPE,
     stock: 2,
@@ -68,7 +68,7 @@ const products = [
 
 // HTML --> div in="product-list-container"
 
-var container = document.getElementById('product-list-container', 'li');
+var container = document.getElementById('product-list-container', 'ol');
 
 var showProducts = () => {
   for (var product of products) {
@@ -88,17 +88,17 @@ function printProduct(product) {
 
   var price = document.createElement('span');
   price.innerText = product.price + ' €';
-  container.appendChild(price);
+  description.appendChild(price);
 
-  var input = document.createElement('input', 'li');
+  var input = document.createElement('input');
   input.setAttribute('id', product.indexElement);
-  input.setAttribute('type', 'number');
+  input.setAttribute('type', parseInt);
   input.setAttribute('value', product.units);
   input.addEventListener(
     'change',
-    (event) => (product.units = event.target.value)
+    (event) => (product.units = parseInt(event.target.value))
   ); //esta función almacena el valor en product.units cada vez que se produce un cambio
-  container.appendChild(input);
+  description.appendChild(input);
 }
 
 showProducts(products);
@@ -134,14 +134,6 @@ function getIVA() {
   document.getElementById('iva-output').value = iva + ' €';
   return iva;
 }
-
-
-
-
-
-
-
-
 
 // function updatePage() {
 //   var total = getTotal(products);
