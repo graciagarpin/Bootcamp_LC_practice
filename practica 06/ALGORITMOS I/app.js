@@ -76,12 +76,6 @@ var showProducts = () => {
   }
 };
 function printProduct(product) {
-  // var index = 1;
-  // var indexElement = document.createElement('li');
-  // indexElement.innerText = index;
-  // container.appendChild(indexElement);
-  // index++;
-
   var description = document.createElement('li'); //creo el elemento
   description.innerText = product.description; //lo modifico. Es decir, le digo que muestre product.description
   container.appendChild(description); //lo añado. Es decir, lo añado como hijo en el HTML
@@ -111,10 +105,13 @@ document
   .addEventListener('click', () => showResult());
 
 function showResult() {
-  var subtotal = getSubtotal();
-  var iva = getIVA();
-  var total = subtotal + iva;
-  document.getElementById('total-output').value = total + ' €';
+  var allUnitsAreZero = disableEnableBtn();
+  if (allUnitsAreZero === false) {
+    var subtotal = getSubtotal();
+    var iva = getIVA();
+    var total = subtotal + iva;
+    document.getElementById('total-output').value = total + ' €';
+  }
 }
 
 function getSubtotal() {
@@ -135,24 +132,20 @@ function getIVA() {
   return iva;
 }
 
-// function updatePage() {
-//   var total = getTotal(products);
-//   var showResult= document.getElementById("total-output").value;
+var disableEnableBtn = () => {
+  var allUnitsAreZero = true;
+  for (product of products) {
+    var units = product.units;
+    if (units != 0) {
+      allUnitsAreZero = false;
+    }
+  }
 
-// showResult= total + " €";
-// }
+  if (allUnitsAreZero) {
+    disableBtn = () => (document.getElementById('calcular-btn').disabled = false); // Disabled
+  } else {
+    enableBtn = () => (document.getElementById('calcular-btn').disabled = true); // Enabled
+  }
 
-// to do:
-
-// var disableEnableBtn = () => {
-//   if (
-//     //falta meter la condición: que todos los product.units valen 0 en el momento de calcular.
-
-//   ) {
-//     disableBtn = () => document.getElementById("calcular-btn").disabled = true; // Disabled
-//   }else {
-//     enableBtn = () => document.getElementById("calcular-btn").disabled = false; // Enabled
-//   }
-// }
-
-// console.log();
+  return allUnitsAreZero;
+};
