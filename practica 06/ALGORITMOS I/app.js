@@ -142,10 +142,9 @@ var disableEnableBtn = () => {
   }
 
   if (allUnitsAreZero) {
-    disableBtn = () => (document.getElementById('calcular-btn').disabled = false); // Disabled
-  } else {
-    enableBtn = () => (document.getElementById('calcular-btn').disabled = true); // Enabled
-  }
+    document.getElementById('calcular-btn').disabled = allUnitsAreZero; // Disabled
+  } // Enabled
+ 
 
   return allUnitsAreZero;
 };
